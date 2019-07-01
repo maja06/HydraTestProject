@@ -15,12 +15,12 @@ namespace HydraTestProject.Models.Core
         [MaxLength(64)]
         public string Name { get; set; }
 
-        public string Descriptopn { get; set; }
+        public string Description { get; set; }
 
         [MaxLength(64)]
         public string DbType { get; set; }
 
-        [MaxLength(12)]
+       // [MaxLength(12)]
         public string DbPrecision { get; set; }
 
         public enum ReferenceType

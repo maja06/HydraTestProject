@@ -1,7 +1,11 @@
-﻿using Abp.AutoMapper;
+﻿using System.Reflection;
+using Abp.AutoMapper;
+using Abp.Localization.Dictionaries;
+using Abp.Localization.Dictionaries.Json;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using HydraTestProject.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace HydraTestProject
 {
@@ -13,6 +17,8 @@ namespace HydraTestProject
         public override void PreInitialize()
         {
             Configuration.Authorization.Providers.Add<HydraTestProjectAuthorizationProvider>();
+
+            
         }
 
         public override void Initialize()

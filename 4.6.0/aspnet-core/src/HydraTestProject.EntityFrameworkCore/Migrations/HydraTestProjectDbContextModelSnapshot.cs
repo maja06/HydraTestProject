@@ -1022,8 +1022,6 @@ namespace HydraTestProject.Migrations
 
                     b.HasIndex("CreatorUserId");
 
-                    b.HasIndex("DeleterUserId");
-
                     b.HasIndex("LastModifierUserId");
 
                     b.HasIndex("TenantId", "NormalizedEmailAddress");
@@ -1033,7 +1031,7 @@ namespace HydraTestProject.Migrations
                     b.ToTable("AbpUsers");
                 });
 
-            modelBuilder.Entity("HydraTestProject.Models.CoreEntity", b =>
+            modelBuilder.Entity("HydraTestProject.Models.Core.CoreEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -1064,7 +1062,7 @@ namespace HydraTestProject.Migrations
                     b.ToTable("CoreEntities");
                 });
 
-            modelBuilder.Entity("HydraTestProject.Models.CoreEntityPropertyValue", b =>
+            modelBuilder.Entity("HydraTestProject.Models.Core.CoreEntityPropertyValue", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1098,14 +1096,15 @@ namespace HydraTestProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EntityId");
-
                     b.HasIndex("EntityTypePropertyId");
+
+                    b.HasIndex("EntityId", "EntityTypePropertyId")
+                        .IsUnique();
 
                     b.ToTable("CoreEntityPropertyValues");
                 });
 
-            modelBuilder.Entity("HydraTestProject.Models.CoreEntityType", b =>
+            modelBuilder.Entity("HydraTestProject.Models.Core.CoreEntityType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1122,9 +1121,9 @@ namespace HydraTestProject.Migrations
 
                     b.Property<int>("InsertUserId");
 
-                    b.Property<bool>("IsCustom");
+                    b.Property<bool>("IsActive");
 
-                    b.Property<bool>("IsaActive");
+                    b.Property<bool>("IsCustom");
 
                     b.Property<string>("LastUpdateIpAddress");
 
@@ -1151,27 +1150,26 @@ namespace HydraTestProject.Migrations
                     b.ToTable("CoreEntityTypes");
                 });
 
-            modelBuilder.Entity("HydraTestProject.Models.CoreEntityTypeProperty", b =>
+            modelBuilder.Entity("HydraTestProject.Models.Core.CoreEntityTypeProperty", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("DbPrecision")
-                        .HasMaxLength(12);
+                    b.Property<string>("DbPrecision");
 
                     b.Property<string>("DbType")
                         .HasMaxLength(64);
 
                     b.Property<string>("DefaultValue");
 
-                    b.Property<string>("Descriptopn");
+                    b.Property<string>("Description");
 
                     b.Property<int>("EntityTypeId");
 
-                    b.Property<DateTime>("InserTime");
-
                     b.Property<string>("InsertIpAddress");
+
+                    b.Property<DateTime>("InsertTime");
 
                     b.Property<int>("InsertUseId");
 
@@ -1200,7 +1198,284 @@ namespace HydraTestProject.Migrations
 
                     b.HasIndex("EntityTypeId");
 
+                    b.HasIndex("ReferenceTableId");
+
+                    b.HasIndex("Name", "EntityTypeId");
+
                     b.ToTable("CoreEntityTypeProperties");
+                });
+
+            modelBuilder.Entity("HydraTestProject.Models.Tabels.TableA", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TableAs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Aigneis"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Alf"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Rosana"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Dillon"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Mariam"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Edith"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Marice"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Raynor"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Aristotle"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Sally"
+                        });
+                });
+
+            modelBuilder.Entity("HydraTestProject.Models.Tabels.TableB", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TableBs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Aigneis"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Alf"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Rosana"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Dillon"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Mariam"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Edith"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Marice"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Raynor"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Aristotle"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Sally"
+                        });
+                });
+
+            modelBuilder.Entity("HydraTestProject.Models.Tabels.TableC", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TableCs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Aigneis"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Alf"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Rosana"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Dillon"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Mariam"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Edith"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Marice"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Raynor"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Aristotle"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Sally"
+                        });
+                });
+
+            modelBuilder.Entity("HydraTestProject.Models.Tabels.TableD", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TableDs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Aigneis"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Alf"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Rosana"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Dillon"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Mariam"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Edith"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Marice"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Raynor"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Aristotle"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Sally"
+                        });
+                });
+
+            modelBuilder.Entity("HydraTestProject.Models.Tabels.TableMetadata", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tables","meta");
                 });
 
             modelBuilder.Entity("HydraTestProject.MultiTenancy.Tenant", b =>
@@ -1394,48 +1669,49 @@ namespace HydraTestProject.Migrations
                         .WithMany()
                         .HasForeignKey("CreatorUserId");
 
-                    b.HasOne("HydraTestProject.Authorization.Users.User", "DeleterUser")
-                        .WithMany()
-                        .HasForeignKey("DeleterUserId");
-
                     b.HasOne("HydraTestProject.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
                 });
 
-            modelBuilder.Entity("HydraTestProject.Models.CoreEntity", b =>
+            modelBuilder.Entity("HydraTestProject.Models.Core.CoreEntity", b =>
                 {
-                    b.HasOne("HydraTestProject.Models.CoreEntityType", "EntityType")
+                    b.HasOne("HydraTestProject.Models.Core.CoreEntityType", "EntityType")
                         .WithMany("Entities")
                         .HasForeignKey("EntityTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HydraTestProject.Models.CoreEntityPropertyValue", b =>
+            modelBuilder.Entity("HydraTestProject.Models.Core.CoreEntityPropertyValue", b =>
                 {
-                    b.HasOne("HydraTestProject.Models.CoreEntity", "Entity")
+                    b.HasOne("HydraTestProject.Models.Core.CoreEntity", "Entity")
                         .WithMany("EntityPropertyValues")
                         .HasForeignKey("EntityId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HydraTestProject.Models.CoreEntityTypeProperty", "EntityTypeProperty")
+                    b.HasOne("HydraTestProject.Models.Core.CoreEntityTypeProperty", "EntityTypeProperty")
                         .WithMany()
                         .HasForeignKey("EntityTypePropertyId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HydraTestProject.Models.CoreEntityType", b =>
+            modelBuilder.Entity("HydraTestProject.Models.Core.CoreEntityType", b =>
                 {
-                    b.HasOne("HydraTestProject.Models.CoreEntityType", "ParentEntityType")
+                    b.HasOne("HydraTestProject.Models.Core.CoreEntityType", "ParentEntityType")
                         .WithMany()
                         .HasForeignKey("ParentEntityTypeId");
                 });
 
-            modelBuilder.Entity("HydraTestProject.Models.CoreEntityTypeProperty", b =>
+            modelBuilder.Entity("HydraTestProject.Models.Core.CoreEntityTypeProperty", b =>
                 {
-                    b.HasOne("HydraTestProject.Models.CoreEntityType", "EntityType")
+                    b.HasOne("HydraTestProject.Models.Core.CoreEntityType", "EntityType")
                         .WithMany("EntityTypeProperties")
                         .HasForeignKey("EntityTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("HydraTestProject.Models.Tabels.TableMetadata", "Metadata")
+                        .WithMany()
+                        .HasForeignKey("ReferenceTableId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

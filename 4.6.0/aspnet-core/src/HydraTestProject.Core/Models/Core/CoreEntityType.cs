@@ -27,7 +27,7 @@ namespace HydraTestProject.Models.Core
 
         public bool IsCustom { get; set; }
 
-        public bool IsaActive { get; set; }
+        public bool IsActive { get; set; }
 
         public int InsertUserId { get; set; }
 

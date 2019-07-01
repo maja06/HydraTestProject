@@ -7,6 +7,10 @@ namespace HydraTestProject.Services
 {
     public interface ISeedService : IApplicationService
     {
-        void Create(int n);
+        void CreateEntityType(int n);
+        void CreateEntityProperty(int n);
+        int GetId();
+
+
     }
 }
