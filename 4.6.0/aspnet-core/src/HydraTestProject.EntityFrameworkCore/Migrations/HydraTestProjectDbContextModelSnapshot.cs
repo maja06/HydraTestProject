@@ -1076,7 +1076,7 @@ namespace HydraTestProject.Migrations
 
                     b.Property<int>("EntityTypePropertyId");
 
-                    b.Property<Guid>("GuidValue");
+                    b.Property<Guid?>("GuidValue");
 
                     b.Property<string>("InsertIpAddress");
 
@@ -1084,7 +1084,7 @@ namespace HydraTestProject.Migrations
 
                     b.Property<int>("InsertUserId");
 
-                    b.Property<int>("IntValue");
+                    b.Property<int?>("IntValue");
 
                     b.Property<string>("LastUpdateIpAddress");
 
@@ -1156,7 +1156,8 @@ namespace HydraTestProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("DbPrecision");
+                    b.Property<string>("DbPrecision")
+                        .HasMaxLength(12);
 
                     b.Property<string>("DbType")
                         .HasMaxLength(64);
@@ -1192,7 +1193,9 @@ namespace HydraTestProject.Migrations
 
                     b.Property<int>("PropertyOrder");
 
-                    b.Property<int>("ReferenceTableId");
+                    b.Property<int?>("ReferenceTableId");
+
+                    b.Property<int>("ReferenceType");
 
                     b.HasKey("Id");
 
@@ -1476,6 +1479,28 @@ namespace HydraTestProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tables","meta");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "TableA"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "TableB"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "TableC"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "TableD"
+                        });
                 });
 
             modelBuilder.Entity("HydraTestProject.MultiTenancy.Tenant", b =>
@@ -1711,8 +1736,7 @@ namespace HydraTestProject.Migrations
 
                     b.HasOne("HydraTestProject.Models.Tabels.TableMetadata", "Metadata")
                         .WithMany()
-                        .HasForeignKey("ReferenceTableId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ReferenceTableId");
                 });
 
             modelBuilder.Entity("HydraTestProject.MultiTenancy.Tenant", b =>

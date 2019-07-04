@@ -15,8 +15,17 @@
     <Compile Remove="Migrations\20190701091102_nova.cs" />
     <Compile Remove="Migrations\20190701091804_nova.cs" />
     <Compile Remove="Migrations\20190701152528_Test.cs" />
+    <Compile Remove="Migrations\20190702062121_nova.cs" />
+    <Compile Remove="Migrations\20190702065619_first.cs" />
+    <Compile Remove="Migrations\20190702070008_Test.cs" />
+    <Compile Remove="Migrations\20190702070117_Test.cs" />
+    <Compile Remove="Migrations\20190702071819_Test.cs" />
+    <Compile Remove="Migrations\20190702084929_Test.cs" />
+    <Compile Remove="Migrations\20190703074401_Test.cs" />
+    <Compile Remove="Migrations\20190703092502_pomaze b.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.1">
       <PrivateAssets>all</PrivateAssets>

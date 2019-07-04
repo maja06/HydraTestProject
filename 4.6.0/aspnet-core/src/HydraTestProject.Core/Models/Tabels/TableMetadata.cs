@@ -9,7 +9,8 @@ namespace HydraTestProject.Models.Tabels
     [Table("Tables", Schema = "meta")]
     public class TableMetadata : Entity
     {
-        public string Name { get; set; }
-        
+      public string Name { get; set; }
+
+      
     }
 }

@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Abp.Application.Services;
+using HydraTestProject.Models.Core;
+using HydraTestProject.Models.Tabels;
 
 namespace HydraTestProject.Services
 {
     public interface ISeedService : IApplicationService
     {
+        bool PostojiLi(Guid id, int id2);
         void CreateEntityType(int n);
-        void CreateEntityProperty(int n);
-        int GetId();
-
-
+        int GetRandomEntityTypeId();
+        Task<TimeSpan> CreateEntity(int n);
+        Task CreateValue();
+        Guid GetRandomEntityGuid();
+        Guid GetGuid(Guid input);
+        void CreateProperties();
+        int GetRandomEntityPropertyId();
+        Task<object> Get();
     }
 }

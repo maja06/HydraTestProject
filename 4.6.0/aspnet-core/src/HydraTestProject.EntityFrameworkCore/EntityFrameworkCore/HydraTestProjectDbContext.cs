@@ -40,9 +40,8 @@ namespace HydraTestProject.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            //modelBuilder.Entity<CoreEntity>()
-            //    .HasIndex(b => b.EntityTypeId)
-            //    .ForSqlServerIsClustered(); 
+            modelBuilder.Entity<CoreEntity>()
+                .HasIndex(b => b.EntityTypeId);
 
             //modelBuilder.Entity<CoreEntityType>()
             //    .HasIndex(b => b.Name)
@@ -56,9 +55,8 @@ namespace HydraTestProject.EntityFrameworkCore
                 .HasIndex(b => new {b.Name, b.EntityTypeId});
                 
 
-            //modelBuilder.Entity<CoreEntityTypeProperty>()
-            //    .HasIndex(b => b.EntityTypeId)
-            //    .ForSqlServerIsClustered();
+            modelBuilder.Entity<CoreEntityTypeProperty>()
+                .HasIndex(b => b.EntityTypeId);
 
             modelBuilder.Entity<CoreEntityPropertyValue>()
                 .HasIndex(b => new {b.EntityId, b.EntityTypePropertyId})
@@ -86,6 +84,15 @@ namespace HydraTestProject.EntityFrameworkCore
             modelBuilder.Entity<TableD>().HasData(listD);
 
 
+            modelBuilder.Entity<TableMetadata>().HasData(
+             new {Name = "TableA", Id =1},
+             new { Name = "TableB", Id =2},
+             new { Name = "TableC" , Id =3},
+             new {Name ="TableD", Id =4});
+
+
+
         }
     }
 }
+ 

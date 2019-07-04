@@ -11,13 +11,13 @@ namespace HydraTestProject.Models.Core
     {
         public string TextValue { get; set; }
 
-        public int IntValue { get; set; }
+        public int? IntValue { get; set; }
 
         public DateTime DataTimeValue { get; set; }
 
         public decimal DecimalValue { get; set; }
 
-        public Guid GuidValue { get; set; }
+        public Guid? GuidValue { get; set; }
 
         public int InsertUserId { get; set; }
 

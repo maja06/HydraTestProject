@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Policy;
 using System.Text;
+using System.Xml.Schema;
 using Abp.Domain.Entities;
 using HydraTestProject.Models.Tabels;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -20,10 +21,10 @@ namespace HydraTestProject.Models.Core
         [MaxLength(64)]
         public string DbType { get; set; }
 
-       // [MaxLength(12)]
+        [MaxLength(12)]
         public string DbPrecision { get; set; }
 
-        public enum ReferenceType
+        public enum ReferenceTypeEnum
         {
             NoReference = 0,
 
@@ -31,9 +32,11 @@ namespace HydraTestProject.Models.Core
 
             ExternalReference = 2
         }
+        
+        public ReferenceTypeEnum ReferenceType { get; set; }
 
-        public int ReferenceTableId { get; set; }
-
+        public int? ReferenceTableId { get; set; } 
+        
         [ForeignKey("ReferenceTableId")]
         public TableMetadata Metadata { get; set; }
 

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HydraTestProject.Migrations
 {
-    public partial class Test : Migration
+    public partial class tst : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -783,8 +783,9 @@ namespace HydraTestProject.Migrations
                     Name = table.Column<string>(maxLength: 64, nullable: true),
                     Description = table.Column<string>(nullable: true),
                     DbType = table.Column<string>(maxLength: 64, nullable: true),
-                    DbPrecision = table.Column<string>(nullable: true),
-                    ReferenceTableId = table.Column<int>(nullable: false),
+                    DbPrecision = table.Column<string>(maxLength: 12, nullable: true),
+                    ReferenceType = table.Column<int>(nullable: false),
+                    ReferenceTableId = table.Column<int>(nullable: true),
                     PropertyOrder = table.Column<int>(nullable: false),
                     DefaultValue = table.Column<string>(nullable: true),
                     IsRequired = table.Column<bool>(nullable: false),
@@ -814,7 +815,7 @@ namespace HydraTestProject.Migrations
                         principalSchema: "meta",
                         principalTable: "Tables",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -904,10 +905,10 @@ namespace HydraTestProject.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TextValue = table.Column<string>(nullable: true),
-                    IntValue = table.Column<int>(nullable: false),
+                    IntValue = table.Column<int>(nullable: true),
                     DataTimeValue = table.Column<DateTime>(nullable: false),
                     DecimalValue = table.Column<decimal>(nullable: false),
-                    GuidValue = table.Column<Guid>(nullable: false),
+                    GuidValue = table.Column<Guid>(nullable: true),
                     InsertUserId = table.Column<int>(nullable: false),
                     InsertTime = table.Column<DateTime>(nullable: false),
                     InsertIpAddress = table.Column<string>(nullable: true),
@@ -925,13 +926,13 @@ namespace HydraTestProject.Migrations
                         column: x => x.EntityId,
                         principalTable: "CoreEntities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_CoreEntityPropertyValues_CoreEntityTypeProperties_EntityTypePropertyId",
                         column: x => x.EntityTypePropertyId,
                         principalTable: "CoreEntityTypeProperties",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -956,13 +957,13 @@ namespace HydraTestProject.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
+                    { 10, "Sally" },
                     { 9, "Aristotle" },
                     { 8, "Raynor" },
                     { 7, "Marice" },
                     { 6, "Edith" },
-                    { 10, "Sally" },
-                    { 4, "Dillon" },
                     { 3, "Rosana" },
+                    { 4, "Dillon" },
                     { 2, "Alf" },
                     { 1, "Aigneis" },
                     { 5, "Mariam" }
@@ -973,14 +974,14 @@ namespace HydraTestProject.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
+                    { 7, "Marice" },
                     { 10, "Sally" },
                     { 9, "Aristotle" },
-                    { 7, "Marice" },
-                    { 6, "Edith" },
                     { 8, "Raynor" },
+                    { 6, "Edith" },
+                    { 2, "Alf" },
                     { 4, "Dillon" },
                     { 3, "Rosana" },
-                    { 2, "Alf" },
                     { 1, "Aigneis" },
                     { 5, "Mariam" }
                 });
@@ -990,16 +991,28 @@ namespace HydraTestProject.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
+                    { 10, "Sally" },
                     { 9, "Aristotle" },
-                    { 1, "Aigneis" },
-                    { 2, "Alf" },
-                    { 3, "Rosana" },
-                    { 4, "Dillon" },
-                    { 5, "Mariam" },
-                    { 6, "Edith" },
-                    { 7, "Marice" },
                     { 8, "Raynor" },
-                    { 10, "Sally" }
+                    { 7, "Marice" },
+                    { 6, "Edith" },
+                    { 5, "Mariam" },
+                    { 3, "Rosana" },
+                    { 2, "Alf" },
+                    { 1, "Aigneis" },
+                    { 4, "Dillon" }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "meta",
+                table: "Tables",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 3, "TableC" },
+                    { 1, "TableA" },
+                    { 2, "TableB" },
+                    { 4, "TableD" }
                 });
 
             migrationBuilder.CreateIndex(
