@@ -1,0 +1,44 @@
+new
+                                     {
+                                         __Entity = evp.__Entity,
+                                         __Property = evp.__Property,
+                                         __Value = evp.__Value,
+                                         Pearla = evp.Pearla,
+                                         Kessia = ex,
+                                         Lorry = evp.Lorry,
+                                         Kurt = evp.Kurt,
+                                     })
+
+public class Xxx 
+{
+	public Xxx(CoreEntity entity, CoreEntityTypeProperty property, CoreEntityPropertyValue value, CoreEntity pearla, IEnumerable<TableA> kessia, CoreEntity lorry, CoreEntity kurt)
+	{
+		__Entity = entity;
+		__Property = property;
+        __Value = value;
+       Pearla = pearla;
+       Kessia = kessia;
+       Lorry = lorry;
+       Kurt = kurt;
+	}
+	
+	public CoreEntity __Entity {get;set;}
+
+	public CoreEntityTypeProperty __Property {get;set;}
+
+	public CoreEntityPropertyValue __Value {get;set;}
+
+	//...
+}
+
+ar body = Expression.New(
+            typeof(ConditionalJoin).GetConstructor(new[] { typeof(int), typeof(string) }),
+            new[] { key.Body, Expression.Invoke(property, parameter) },
+            new [] { typeof(ConditionalJoin).GetProperty("Key"), typeof(ConditionalJoin).GetProperty("Property") });
+
+
+
+
+			as body = Expression.New(typeof(Xxx).GetConstructor(new[]{typeof(CoreEntity),typeof(CoreEntityTypeProperty), typeof(CoreEntityTypePropertyValue), typeof(IEnumerable<TableA>), })),
+			new[]{entity.Body, Expression.Invoke(property, parameter), property.Body}
+			new[]{typeof(Xxx).GetProperty("__Entity"), typeof(Xxx).GetProperty("__Value"), typeof(Xxx).GetProperty("__Property"), typeof(Xxx).GetProperty("Lorry"), typeof(Xxx).GetProperty("Kessia"), typeof(Xxx).GetProperty("Pearla")});

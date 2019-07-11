@@ -11,7 +11,7 @@ namespace HydraTestProject.Services
 {
     public interface ISeedService : IApplicationService
     {
-        bool PostojiLi(Guid id, int id2);
+        
         void CreateEntityType(int n);
         int GetRandomEntityTypeId();
         Task<TimeSpan> CreateEntity(int n);
@@ -21,5 +21,7 @@ namespace HydraTestProject.Services
         void CreateProperties();
         int GetRandomEntityPropertyId();
         Task<object> Get();
+        //List<object> GetSearchResult(QueryInfo query);
+
     }
 }

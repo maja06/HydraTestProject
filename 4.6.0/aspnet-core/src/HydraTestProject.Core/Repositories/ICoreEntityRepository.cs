@@ -10,5 +10,6 @@ namespace HydraTestProject.Repositories
     public interface ICoreEntityRepository : IRepository<CoreEntity, Guid>
     {
         Task<object> Test();
+        Task<object> TestLambda();
     }
 }

@@ -88,7 +88,7 @@ namespace HydraTestProject.EntityFrameworkCore
              new {Name = "TableA", Id =1},
              new { Name = "TableB", Id =2},
              new { Name = "TableC" , Id =3},
-             new {Name ="TableD", Id =4});
+             new { Name ="TableD", Id =4});
 
 
 

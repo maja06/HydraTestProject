@@ -12,6 +12,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.7" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HydraTestProject.Core\HydraTestProject.Core.csproj" />
@@ -19,6 +20,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.abstractions\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="NUglify">
+      <HintPath>..\..\..\..\..\..\..\.nuget\packages\nuglify\1.5.12\lib\netstandard2.0\NUglify.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
